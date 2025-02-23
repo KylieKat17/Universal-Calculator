@@ -1,2 +1,42 @@
 # Universal-Calculator
-Calculator for binary calculations, hexidecimal calculations, and binary/hex/decimal conversions
+Calculator for binary calculations, hexadecimal calculations, and binary/hex/decimal conversions
+
+Made for checking manual calculations in CPSC2310 after I couldn't find a program or website that allowed me to add/subtract multiple binary or hexadecimal numbers at one time. Started small, but as I was taking a quiz, I expanded it. For now, it's rather basic (other than that it can add/subtract multiple numbers at once).
+
+---
+**Version Release**
+
+**V1.0 - 2/22/2025**
+
+*Menu/Driver*
+- Rudimentary menu and logic directory. Needs to be updated for style and readability with indents and spacer lines
+
+*Binary calculations*
+- Multi-number binary addition
+- Multi-number binary subtraction
+
+*Hexadecimal*
+- Hexadecimal addition
+- Hexadecimal subtraction
+  - The implementation for multi-number calculations exists, but has not been tested
+
+*Conversions*
+- Binary <-> decimal conversion
+- Binary <-> hexadecimal conversion
+- Hexadecimal <-> decimal conversion
+  - The implementation exists in hexConversion.cpp, but hasn't been implemented on it's own under the conversions. Has been successfully called for basic hexadecimal addition/subtraction
+ 
+*Makefile*
+- Basic makefile that has functions for make, make run, and make clean. Needs to be cleaned up and shortened at a later date.
+
+---
+
+**Machine Specs**
+Compiled and tested on a machine with the following specs:
+LSB Version:    core-11.1.0ubuntu2-noarch:security-11.1.0ubuntu2-noarch
+Distributor ID: Ubuntu
+Description:    Ubuntu 20.04.6 LTS
+Release:        20.04
+Codename:       focal
+
+---
