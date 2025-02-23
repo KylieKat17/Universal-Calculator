@@ -1,7 +1,11 @@
 # Universal-Calculator
-Calculator for binary calculations, hexadecimal calculations, and binary/hex/decimal conversions
+C++ calculator for binary calculations, hexadecimal calculations, and binary/hex/decimal conversions
 
-Made for checking manual calculations in CPSC2310 after I couldn't find a program or website that allowed me to add/subtract multiple binary or hexadecimal numbers at one time. Started small, but as I was taking a quiz, I expanded it. For now, it's rather basic (other than that it can add/subtract multiple numbers at once).
+Made for checking manual calculations in CPSC 2310 after I couldn't find a program or website that allowed me to add/subtract multiple binary or hexadecimal numbers at one time. Started small, but as I was taking a quiz, I expanded it. For now, it's rather basic (other than that it can add/subtract multiple numbers at once). I basically want this to be my one stop shop for checking manual calculations required for Chapter 2 of CPSC 2310's coursework, so I'll be updating as the course progresses.
+
+To Be Added
+- Endian ordering functionality
+- Determining hexadecimal based on 2^n
 
 ---
 **Version Release**
