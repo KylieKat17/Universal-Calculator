@@ -7,6 +7,8 @@
 #include <sstream>
 #include <iomanip>
 
+void displayHexMenu(); // V2
+void handleHexCalculations(); // V2
 std::string addHex(std::string a, std::string b);
 std::string subtractHex(std::string a, std::string b);
 std::string addMultipleHex(std::vector<std::string>& hexNumbers);

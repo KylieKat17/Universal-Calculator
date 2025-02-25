@@ -1,10 +1,98 @@
 #include "binaryCalculator.h"
-#include <algorithm>
+#include <iostream>
 
 using namespace std;
 
+// Function prototypes
+void displayBinaryMenu();
+string padBinary(string binary, size_t length);
+
+
+// Function prototypes
+void displayBinaryMenu();
+string padBinary(string binary, size_t length);
+string trimLeadingZeros(string binary);
+
+// Function to handle binary calculations
+void handleBinaryCalculations() {
+    char operation;
+    
+    displayBinaryMenu();
+    cin >> operation;
+    operation = tolower(operation);
+    
+    int n;
+    cout << "Enter the number of binary numbers: ";
+    cin >> n;
+    
+    vector<string> binaries(n);
+    cout << "Enter the binary numbers: " << endl;
+    for (int i = 0; i < n; i++) {
+        cin >> binaries[i];
+    }
+    
+    // Determine the required bit length based on the longest input
+    size_t maxLength = 0;
+    for (const string& binary : binaries) {
+        if (binary.length() > maxLength) {
+            maxLength = binary.length();
+        }
+    }
+    
+    // Ensure maxLength accounts for potential carry
+    maxLength += 1;
+
+    // Pad all inputs to the same length
+    for (string &binary : binaries) {
+        binary = padBinary(binary, maxLength);
+    }
+    
+    string result = (operation == 'a') ? addMultipleBinaries(binaries) : subtractMultipleBinaries(binaries);
+
+    // Ensure the result is correctly padded to match the longest input length
+    // and remove leading zeros while keeping at least one bit for addition
+    if (operation == 'a') {
+        result = trimLeadingZeros(result);
+    } else {
+        result = padBinary(result, maxLength);
+    }
+
+    cout << "\nResult: " << result << endl;
+}
+
+// Function to display binary operations menu
+void displayBinaryMenu() {
+    cout << "\n***** Binary Calculations *****" << endl;
+    cout << "Select an operation:" << endl;
+    cout << "  [A]: Add binary numbers" << endl;
+    cout << "  [S]: Subtract binary numbers" << endl;
+    cout << "Enter your choice: ";
+}
+
+// Function to pad binary numbers to maintain leading zeros
+string padBinary(string binary, size_t length) {
+    while (binary.length() < length) {
+        binary = '0' + binary;
+    }
+    return binary;
+}
+
+// Function to trim excessive leading zeros while ensuring at least one leading zero
+string trimLeadingZeros(string binary) {
+    size_t firstOne = binary.find_first_not_of('0');
+    if (firstOne == string::npos) {
+        return "0"; // If all zeros, return a single zero
+    }
+    return "0" + binary.substr(firstOne);
+}
+
 // Function to add two binary strings
 string addBinary(string a, string b) {
+    // Ensure both numbers are the same length before adding
+    size_t maxLength = max(a.length(), b.length()) + 1; // Account for carry
+    a = padBinary(a, maxLength);
+    b = padBinary(b, maxLength);
+    
     string result = "";
     int carry = 0, i = a.size() - 1, j = b.size() - 1;
     
@@ -17,12 +105,18 @@ string addBinary(string a, string b) {
         carry = sum / 2;
     }
     
+    if (carry) result += '1'; // Account for final carry
+    
     reverse(result.begin(), result.end());
     return result;
 }
 
 // Function to subtract two binary strings
 string subtractBinary(string a, string b) {
+    size_t maxLength = max(a.length(), b.length());
+    a = padBinary(a, maxLength);
+    b = padBinary(b, maxLength);
+    
     string result = "";
     int borrow = 0, i = a.size() - 1, j = b.size() - 1;
     
@@ -37,11 +131,8 @@ string subtractBinary(string a, string b) {
         result += diff + '0';
     }
     
-    while (result.size() > 1 && result.back() == '0')
-        result.pop_back();
-    
     reverse(result.begin(), result.end());
-    return result;
+    return padBinary(result, maxLength);
 }
 
 // Function to add multiple binary numbers

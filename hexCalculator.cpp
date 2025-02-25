@@ -1,9 +1,42 @@
 #include "hexCalculator.h"
 #include "hexConversion.h"
-#include <iostream>
-#include <vector>
+#include <algorithm>
 
 using namespace std;
+
+// Function prototypes
+void displayHexMenu();
+
+// Function to handle hexadecimal calculations
+void handleHexCalculations() {
+    char operation;
+    
+    displayHexMenu();
+    cin >> operation;
+    operation = tolower(operation);
+    
+    int n;
+    cout << "\nEnter the number of hexadecimal numbers: ";
+    cin >> n;
+    
+    vector<string> hexNumbers(n);
+    cout << "\nEnter the hexadecimal numbers: " << endl;
+    for (int i = 0; i < n; i++) {
+        cin >> hexNumbers[i];
+    }
+    
+    string result = (operation == 'a') ? addMultipleHex(hexNumbers) : subtractMultipleHex(hexNumbers);
+    cout << "\nResult: " << result << endl;
+}
+
+// Function to display hexadecimal operations menu
+void displayHexMenu() {
+    cout << "\n***** Hexadecimal Calculations *****" << endl;
+    cout << "\nSelect an operation:" << endl;
+    cout << "\t[A]: Add hexadecimal numbers" << endl;
+    cout << "\t[S]: Subtract hexadecimal numbers" << endl;
+    cout << "\n\tEnter your choice: " << endl;
+}
 
 // Function to add two hexadecimal numbers
 string addHex(string a, string b) {
