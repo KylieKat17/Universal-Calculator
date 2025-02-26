@@ -10,6 +10,24 @@ To Be Added
 ---
 **Version Release**
 
+**V2.0 - 2/25/2025**
+
+*Menu/Driver*
+- Simplified driver to only display the initial menu and then call functions from other files to direct to further calculations/conversion menus and logic
+
+*Binary Calculations*
+- Menu and input prompts have been moved to here
+- Updated binary subtraction/addition to allow for inputs of different lengths
+- Updated binary subtraction/addition to handle padding on the outputs (accounts for inputs of different lengths)
+  - Probably should test on 00000000 +/- 00000000 or outputs with multiple leading 0s
+
+*Hexadecimal Calculations*
+- Menu and input prompts have been moved here
+- WIll update for multiple input lengths in V2.1
+
+*Conversions*
+- Fixed the padding issue for hex to binary conversion
+
 **V1.0 - 2/22/2025**
 
 *Menu/Driver*
