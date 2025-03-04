@@ -1,14 +1,26 @@
 # Universal-Calculator
 C++ calculator for binary calculations, hexadecimal calculations, and binary/hex/decimal conversions
 
-Made for checking manual calculations in CPSC 2310 after I couldn't find a program or website that allowed me to add/subtract multiple binary or hexadecimal numbers at one time. Started small, but as I was taking a quiz, I expanded it. For now, it's rather basic (other than that it can add/subtract multiple numbers at once). I basically want this to be my one stop shop for checking manual calculations required for Chapter 2 of CPSC 2310's coursework, so I'll be updating as the course progresses.
+Originally made for checking manual calculations in CPSC 2310 after I couldn't find a program or website that allowed me to add/subtract multiple binary or hexadecimal numbers at one time. Started small, but as I was taking a quiz, I expanded it. For now, it's rather basic (other than that it can add/subtract multiple numbers at once). I basically want this to be my one stop shop for checking manual calculations required for Chapter 2 of CPSC 2310's coursework, so I'll be updating as the course progresses. As of 3/4/2025, while literally in the middle of taking a Lab Quiz, I've decided to expand this "calculator" to handle everything in the to be added section, in no particular order.. I will be including a copy of the notes from this class that were used as reference. Eventually, there will be a working list of all the capabilities in the present version on here. This has been a great learning excercise for me. This is not the property of Clemson University, and I'm making this open-source on the condition that I get attribution. I will also include a list of any sites or reopositories I used as reference while writing this (I had to do the checking somehow, after all!). I will try *my best* to make sure the padding is displayed on any binary output, but will have to do so as I catch that it isn't.
 
-To Be Added
+To Be Added (FOR SURE)
 - Endian ordering functionality
 - Determining hexadecimal based on 2^n
 - Bitwise Calculatator
+  - Bit-wise operations: NOT, AND, OR, XOR (~, &, |, ^)
+    - Support for Hex operations (so takes in Hex, converts to binary, conducts binary operation, and converts back to hex)  
+  - Bit-wise binary shifting (left, right (Logical), right (Arithmatic))
+- Logical Operations (outputs 0x00 (TRUE) or 0x01 (FALSE)
+- Signed/Unsigned Data ranges for word sizes
+- Values for Signed/Unsined Calculator(s)
+  - Data ranges for word sizes given an integer (W=?)
+  - Values for signed and unsigned binary strings
 - Complement calculator (positive to negative binary and vice versa)
   - -25 <-> 25
+
+To Be Added (POSSIBLY)
+- 
+
 
 ---
 ### Version Release
