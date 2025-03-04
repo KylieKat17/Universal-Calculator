@@ -6,6 +6,7 @@ Made for checking manual calculations in CPSC 2310 after I couldn't find a progr
 To Be Added
 - Endian ordering functionality
 - Determining hexadecimal based on 2^n
+- Bitwise Calculatator
 - Complement calculator (positive to negative binary and vice versa)
   - -25 <-> 25
 
