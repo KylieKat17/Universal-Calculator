@@ -3,14 +3,11 @@
 
 using namespace std;
 
-// Function prototypes
-void displayConversionMenu();
-
 // Function to handle conversions
-void handleConversions() {
+void handleBinaryConversions() {
     char conversion;
     
-    displayConversionMenu();
+    displayBinaryConversionMenu();
     cin >> conversion;
     conversion = tolower(conversion);
     
@@ -40,19 +37,18 @@ void handleConversions() {
 }
 
 // Function to display conversion options
-void displayConversionMenu() {
-    cout << "\n***** Conversion Options *****" << endl;
-    cout << "\nSelect a conversion type:" << endl;
-    cout << "\t[D]: Convert decimal to binary" << endl;
-    cout << "\t[B]: Convert binary to decimal" << endl;
-    cout << "\t[H]: Convert binary to hexadecimal" << endl;
-    cout << "\t[X]: Convert hexadecimal to binary" << endl;
-    cout << "\n\tEnter your choice: ";
+void displayBinaryConversionMenu() {
+    cout << "\n***** Binary Conversions *****";
+    cout << "\nSelect a conversion type:";
+    cout << "\n  [D]: Convert decimal to binary";
+    cout << "\n  [B]: Convert binary to decimal";
+    cout << "\n  [H]: Convert binary to hexadecimal";
+    cout << "\n  [X]: Convert hexadecimal to binary";
+    cout << "\nEnter your choice: ";
 }
 
 // Function to convert decimal to binary with at least 8-bit padding
 string decimalToBinary(int num) {
-    // V2???
     if (num == 0) return "00000000";
     string binary = "";
     while (num > 0) {

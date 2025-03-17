@@ -6,8 +6,8 @@
 #include <sstream>  // Added for stringstream
 #include <iomanip>  // Added for hex manipulator
 
-void displayConversionMenu();
-void handleConversions();
+void displayBinaryConversionMenu();
+void handleBinaryConversions();
 std::string decimalToBinary(int num);
 int binaryToDecimal(std::string binary);
 std::string binaryToHex(std::string binary);

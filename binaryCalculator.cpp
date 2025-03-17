@@ -62,11 +62,11 @@ void handleBinaryCalculations() {
 
 // Function to display binary operations menu
 void displayBinaryMenu() {
-    cout << "\n***** Binary Calculations *****" << endl;
-    cout << "Select an operation:" << endl;
-    cout << "  [A]: Add binary numbers" << endl;
-    cout << "  [S]: Subtract binary numbers" << endl;
-    cout << "Enter your choice: ";
+    cout << "\n***** Binary Calculations *****";
+    cout << "\nSelect an operation:";
+    cout << "\n  [A]: Add binary numbers";
+    cout << "\n  [S]: Subtract binary numbers";
+    cout << "\nEnter your choice: ";
 }
 
 // Function to pad binary numbers to maintain leading zeros

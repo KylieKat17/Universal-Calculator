@@ -31,11 +31,11 @@ void handleHexCalculations() {
 
 // Function to display hexadecimal operations menu
 void displayHexMenu() {
-    cout << "\n***** Hexadecimal Calculations *****" << endl;
-    cout << "\nSelect an operation:" << endl;
-    cout << "\t[A]: Add hexadecimal numbers" << endl;
-    cout << "\t[S]: Subtract hexadecimal numbers" << endl;
-    cout << "\n\tEnter your choice: " << endl;
+    cout << "\n***** Hexadecimal Calculations *****";
+    cout << "\nSelect an operation:";
+    cout << "\n  [A]: Add hexadecimal numbers";
+    cout << "\n  [S]: Subtract hexadecimal numbers";
+    cout << "\nEnter your choice: ";
 }
 
 // Function to add two hexadecimal numbers
