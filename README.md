@@ -4,8 +4,8 @@ C++ calculator for binary calculations, hexadecimal calculations, and binary/hex
 Originally made for checking manual calculations in CPSC 2310 after I couldn't find a program or website that allowed me to add/subtract multiple binary or hexadecimal numbers at one time. Started small, but as I was taking a quiz, I expanded it. For now, it's rather basic (other than that it can add/subtract multiple numbers at once). I basically want this to be my one stop shop for checking manual calculations required for Chapter 2 of CPSC 2310's coursework, so I'll be updating as the course progresses. As of 3/4/2025, while literally in the middle of taking a Lab Quiz, I've decided to expand this "calculator" to handle everything in the to be added section, in no particular order.. I will be including a copy of the notes from this class that were used as reference. Eventually, there will be a working list of all the capabilities in the present version on here. This has been a great learning excercise for me. This is not the property of Clemson University, and I'm making this open-source on the condition that I get attribution. I will also include a list of any sites or reopositories I used as reference while writing this (I had to do the checking somehow, after all!). I will try *my best* to make sure the padding is displayed on any binary output, but will have to do so as I catch that it isn't.
 
 To Be Added (FOR SURE)
-- Endian ordering functionality
-- Determining hexadecimal based on 2^n
+- Endian ordering functionality (Big vs Little)
+- Determining hexadecimal based on 2^n (powers of 2 representation)
 - Bitwise Calculatator
   - Bit-wise operations: NOT, AND, OR, XOR (~, &, |, ^)
     - Support for Hex operations (so takes in Hex, converts to binary, conducts binary operation, and converts back to hex)  
@@ -19,8 +19,14 @@ To Be Added (FOR SURE)
   - -25 <-> 25
 
 To Be Added (POSSIBLY)
-- 
+- Add spacing between bytes in binary outputs
+- Limit on how many numbers can be used in binary and hex calculations
+- Allow negative inputs for decimal <-> anything conversions
+- Swap .h files for .hpp files
 
+NOTICED ISSUES (AS OF V3 WIP)
+- For V2, the hex to binary conversion only allows strings of 7 characters/digits, once it reaches 8, it outputs a string 0 followed by 1s
+- For binary to hex, there's a weird input case (1100 1010 0110 1001 1001 1011 1001 0110) that breaks it. Gives -899048554 when it should give CA699B96
 
 ---
 ### Version Release
