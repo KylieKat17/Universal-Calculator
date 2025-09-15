@@ -10,21 +10,21 @@ void displayHexMenu();
 // Function to handle hexadecimal calculations
 void handleHexCalculations() {
     char operation;
-    
+
     displayHexMenu();
     cin >> operation;
     operation = tolower(operation);
-    
+
     int n;
     cout << "\nEnter the number of hexadecimal numbers: ";
     cin >> n;
-    
+
     vector<string> hexNumbers(n);
     cout << "\nEnter the hexadecimal numbers: " << endl;
     for (int i = 0; i < n; i++) {
         cin >> hexNumbers[i];
     }
-    
+
     string result = (operation == 'a') ? addMultipleHex(hexNumbers) : subtractMultipleHex(hexNumbers);
     cout << "\nResult: " << result << endl;
 }

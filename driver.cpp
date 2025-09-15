@@ -3,6 +3,8 @@
 #include "binaryConversion.h"
 #include "hexCalculator.h"
 #include "hexConversion.h"
+#include "bitWiseOperations.hpp"
+#include "bitShift.hpp"
 
 using namespace std;
 
@@ -12,12 +14,12 @@ void displayMainMenu();
 // Main driver function
 int main() {
     char choice;
-    
+
     while (true) {
         displayMainMenu();
         cin >> choice;
         choice = tolower(choice);
-        
+
         switch (choice) {
             case 'b':
                 handleBinaryCalculations();
@@ -31,6 +33,12 @@ int main() {
             case 'x':
                 handleBinaryConversions();
                 break;
+			case 'w':
+				handleBitWiseOperations();
+				break;
+			case 's':
+				handleBitShifting();
+				break;
             case 'q':
                 cout << "Exiting program..." << endl;
                 return 0;
@@ -49,6 +57,8 @@ void displayMainMenu() {
     cout << "\n  [H]: Hexadecimal calculations (addition/subtraction)";
     cout << "\n  [C]: Hexadecimal conversions (hex <-> decimal)";
     cout << "\n  [X]: Binary conversions (decimal <-> binary, binary <-> hex)";
-    cout << "\n  [Q]: Quit program";
+    cout << "\n  [W]: Bitwise operations (AND, OR, XOR, Complement, isOdd)";
+	cout << "\n  [S]: Bit Shift operations (left, logical/arithmetic right)";
+	cout << "\n  [Q]: Quit program";
     cout << "\nEnter your choice: ";
 }
