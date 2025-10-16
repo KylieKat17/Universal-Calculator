@@ -1,5 +1,5 @@
-#ifndef BINARY_CONVERSION_H
-#define BINARY_CONVERSION_H
+#ifndef BINARY_CONVERSION_HPP
+#define BINARY_CONVERSION_HPP
 
 #include <iostream>
 #include <string>
@@ -13,4 +13,5 @@ int binaryToDecimal(std::string binary);
 std::string binaryToHex(std::string binary);
 std::string hexToBinary(std::string hex);
 
-#endif // BINARY_CONVERSION_H
+#endif // BINARY_CONVERSION_HPP
+
