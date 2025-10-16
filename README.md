@@ -22,7 +22,7 @@ To Be Added (POSSIBLY)
 - Add spacing between bytes in binary outputs
 - Limit on how many numbers can be used in binary and hex calculations
 - Allow negative inputs for decimal <-> anything conversions
-- Swap .h files for .hpp files
+- Update makefile
 
 NOTICED ISSUES (AS OF V3 WIP)
 - For V2, the hex to binary conversion only allows strings of 7 characters/digits, once it reaches 8, it outputs a string 0 followed by 1s
@@ -30,6 +30,14 @@ NOTICED ISSUES (AS OF V3 WIP)
 
 ---
 ### Version Release
+
+**V2.1 - 10/16/2025**
+- Swapped .h files for .hpp files
+- Cleaned up includes in .hpp/.cpp files to comply with best-practice
+- Reorganized file structure
+- Added util.cpp/hpp for future universal use (not implemented)
+- Cleaned up and modified menus for binaryConversion.cpp, hexConversion.cpp, driver.cpp, hexCalculator.cpp (still need to add validation)
+- Notes on added functionality in V3
 
 **V2.0 - 2/25/2025**
 
