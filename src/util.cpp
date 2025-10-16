@@ -59,6 +59,15 @@ string padBinary(const string& binaryStr, size_t length) {
     return string(length - binaryStr.size(), '0') + binaryStr;
 }
 
+// Function to trim excessive leading zeros while ensuring at least one leading zero
+string trimLeadingZeros(string binary) {
+    size_t firstOne = binary.find_first_not_of('0');
+    if (firstOne == string::npos) {
+        return "0"; // If all zeros, return a single zero
+    }
+    return "0" + binary.substr(firstOne);
+}
+
 // Formats a binary string into groups (default 4 bits)
 string formatBinaryWithSpaces(const string& binaryStr, int groupSize) {
     string cleaned;

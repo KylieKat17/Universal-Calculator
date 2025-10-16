@@ -1,19 +1,10 @@
 #include "binaryCalculator.hpp"
+#include "util.hpp"
 #include <locale>
 #include <iostream>
 #include <algorithm>
 
 using namespace std;
-
-// Function prototypes
-void displayBinaryMenu();
-string padBinary(string binary, size_t length);
-
-
-// Function prototypes
-void displayBinaryMenu();
-string padBinary(string binary, size_t length);
-string trimLeadingZeros(string binary);
 
 // Function to handle binary calculations
 void handleBinaryCalculations() {
@@ -31,6 +22,13 @@ void handleBinaryCalculations() {
     cout << "Enter the binary numbers: " << endl;
     for (int i = 0; i < n; i++) {
         cin >> binaries[i];
+    }
+
+    // Validate input - V3
+    for (const string& binary : binaries) {
+        if (!isValidBinary(binary)) {
+            printInvalidInputMessage();
+        }
     }
 
     // Determine the required bit length based on the longest input
@@ -59,7 +57,8 @@ void handleBinaryCalculations() {
         result = padBinary(result, maxLength);
     }
 
-    cout << "\nResult: " << result << endl;
+    cout << "\nResult: " << formatBinaryWithSpaces(result) << endl;
+    promptReturnToMenu(); // NOTE: might remove
 }
 
 // Function to display binary operations menu
@@ -69,23 +68,6 @@ void displayBinaryMenu() {
     cout << "\n  [A]: Add binary numbers";
     cout << "\n  [S]: Subtract binary numbers";
     cout << "\nEnter your choice: ";
-}
-
-// Function to pad binary numbers to maintain leading zeros
-string padBinary(string binary, size_t length) {
-    while (binary.length() < length) {
-        binary = '0' + binary;
-    }
-    return binary;
-}
-
-// Function to trim excessive leading zeros while ensuring at least one leading zero
-string trimLeadingZeros(string binary) {
-    size_t firstOne = binary.find_first_not_of('0');
-    if (firstOne == string::npos) {
-        return "0"; // If all zeros, return a single zero
-    }
-    return "0" + binary.substr(firstOne);
 }
 
 // Function to add two binary strings
@@ -155,3 +137,22 @@ string subtractMultipleBinaries(vector<string>& binaries) {
     }
     return diff;
 }
+
+/* moved to util file for V3
+// Function to pad binary numbers to maintain leading zeros
+string padBinary(string binary, size_t length) {
+    while (binary.length() < length) {
+        binary = '0' + binary;
+    }
+    return binary;
+}
+
+// Function to trim excessive leading zeros while ensuring at least one leading zero
+string trimLeadingZeros(string binary) {
+    size_t firstOne = binary.find_first_not_of('0');
+    if (firstOne == string::npos) {
+        return "0"; // If all zeros, return a single zero
+    }
+    return "0" + binary.substr(firstOne);
+}
+*/
