@@ -6,8 +6,8 @@
 
 void handleBitWiseOperations();
 std::string isOdd(std::uint8_t);
-uint8_t binaryToUInt8(const string&);
-uint8_t hexToUInt8(const string&);
+uint8_t binaryToUInt8(const std::string&);
+uint8_t hexToUInt8(const std::string&);
 
 #endif //BITWISE_OPERATIONS_HPP
 

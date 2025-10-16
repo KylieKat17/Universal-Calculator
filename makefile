@@ -12,7 +12,7 @@ MODULES = \
   bitShift \
   bitWiseOperations \
   hexCalculator \
-  hexConversion
+  hexConversion \
   util
 
 SOURCES = $(addprefix $(SRC_DIR)/,$(addsuffix .cpp,$(MODULES))) $(SRC_DIR)/driver.cpp
