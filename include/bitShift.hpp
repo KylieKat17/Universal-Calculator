@@ -1,21 +1,16 @@
-#ifndef BITSHIFT_HPP
-#define BITSHIFT_HPP
+#ifndef BIT_SHIFT_HPP
+#define BIT_SHIFT_HPP
 
-#include <iostream>
 #include <bitset>
-#include <limits>
+//#include <limits> Old, might need again
 #include <string>
-#include <sstream>
-#include <algorithm>
-
-using namespace std;
 
 // Function prototypes
 void handleBitShifting();
 void displayBitShiftMenu();
-string logicalLeftShift(const string&, int);
-string logicalRightShift(const string&, int);
-string arithmeticRightShift(const string&, int);
-void performAllShifts(const string&, int);
+std::string logicalLeftShift(const std::string&, int);
+std::string logicalRightShift(const std::string&, int);
+std::string arithmeticRightShift(const std::string&, int);
+void performAllShifts(const std::string&, int);
 
-#endif //BITSHIFT_HPP
+#endif //BIT_SHIFT_HPP
