@@ -1,11 +1,8 @@
 #ifndef BINARY_CALCULATOR_HPP
 #define BINARY_CALCULATOR_HPP
 
-#include <locale>
-#include <iostream>
 #include <vector>
 #include <string>
-#include <algorithm>
 
 // Function Prototypes
 void displayBinaryMenu(); // V2

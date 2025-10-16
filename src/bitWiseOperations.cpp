@@ -1,6 +1,10 @@
 #include "bitWiseOperations.hpp"
+#include "binaryConversion.hpp"
 #include <iostream>
 #include <algorithm>
+#include <sstream>
+#include <iomanip>
+#include <bitset>
 
 using namespace std;
 

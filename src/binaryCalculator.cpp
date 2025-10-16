@@ -1,4 +1,7 @@
 #include "binaryCalculator.hpp"
+#include <locale>
+#include <iostream>
+#include <algorithm>
 
 using namespace std;
 
