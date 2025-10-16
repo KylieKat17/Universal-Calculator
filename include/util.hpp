@@ -17,5 +17,11 @@ bool isValidHex(const std::string& str);
 bool promptReturnToMenu();
 bool promptResetShift();
 void printInvalidInputMessage();
+std::string decimalToBinary(int num);
+int binaryToDecimal(const std::string& binary);
+std::string binaryToHex(const std::string& binary);
+std::string hexToBinary(const std::string& hex);
+long long hexToDecimal(const std::string& hexStr);
+std::string decimalToHex(long long decimalValue);
 
 #endif // UTIL_HPP

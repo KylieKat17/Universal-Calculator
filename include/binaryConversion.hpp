@@ -8,10 +8,6 @@
 
 void displayBinaryConversionMenu();
 void handleBinaryConversions();
-std::string decimalToBinary(int num);
-int binaryToDecimal(std::string binary);
-std::string binaryToHex(std::string binary);
-std::string hexToBinary(std::string hex);
 
 #endif // BINARY_CONVERSION_HPP
 

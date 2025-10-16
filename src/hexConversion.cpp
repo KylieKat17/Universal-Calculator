@@ -1,7 +1,8 @@
 #include "hexConversion.hpp"
-#include <sstream>   // For std::stringstream
-#include <iomanip>   // For std::hex, std::uppercase
-#include <iostream>  // For std::cin, std::cout (if used)
+#include "util.hpp"
+#include <iostream>
+#include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -14,17 +15,30 @@ void handleHexConversions() {
     conversion = tolower(conversion);
     
     if (conversion == 'd') {
-        int decimal;
+        string input;
         cout << "\nEnter a decimal number: ";
-        cin >> decimal;
+        cin >> input;
+
+        input = trimWhitespace(input);
+        stringstream ss(input);
+        long long decimal;
+        ss >> decimal;
+
         cout << "\nHexadecimal equivalent: " << decimalToHex(decimal) << endl;
     } else if (conversion == 'h') {
         string hex;
         cout << "\nEnter a hexadecimal number: ";
+
+        hex = trimWhitespace(toLowercase(hex));
+        if (!isValidHex(hex)) {
+            printInvalidInputMessage();
+            return;
+        }
+
         cin >> hex;
         cout << "\nDecimal equivalent: " << hexToDecimal(hex) << endl;
     } else {
-        cout << "\nInvalid conversion choice." << endl;
+        printInvalidInputMessage();
     }
 }
 
@@ -35,20 +49,4 @@ void displayHexConversionMenu() {
     cout << "\n  [D]: Convert decimal to hexadecimal";
     cout << "\n  [H]: Convert hexadecimal to decimal";
     cout << "\nEnter your choice: ";
-}
-
-// Function to convert a hexadecimal string to an integer
-long long hexToDecimal(const string& hexStr) {
-    long long decimalValue;
-    stringstream ss;
-    ss << std::hex << hexStr;
-    ss >> decimalValue;
-    return decimalValue;
-}
-
-// Function to convert an integer to a hexadecimal string
-string decimalToHex(long long decimalValue) {
-    stringstream ss;
-    ss << std::hex << decimalValue;
-    return ss.str();
 }
