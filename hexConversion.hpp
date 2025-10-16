@@ -1,5 +1,5 @@
-#ifndef HEX_CONVERSION_H
-#define HEX_CONVERSION_H
+#ifndef HEX_CONVERSION_HPP
+#define HEX_CONVERSION_HPP
 
 #include <string>
 #include <sstream>
@@ -11,4 +11,5 @@ void handleHexConversions();
 long long hexToDecimal(const std::string& hexStr);
 std::string decimalToHex(long long decimalValue);
 
-#endif
+#endif // HEX_CONVERSION_HPP
+
