@@ -1,5 +1,5 @@
-#ifndef BINARY_CALCULATOR_H
-#define BINARY_CALCULATOR_H
+#ifndef BINARY_CALCULATOR_HPP
+#define BINARY_CALCULATOR_HPP
 
 #include <locale>
 #include <iostream>
@@ -18,4 +18,5 @@ std::string subtractBinary(std::string a, std::string b);
 std::string addMultipleBinaries(std::vector<std::string>& binaries);
 std::string subtractMultipleBinaries(std::vector<std::string>& binaries);
 
-#endif // BINARY_CALCULATOR_H
+#endif // BINARY_CALCULATOR_HPP
+
