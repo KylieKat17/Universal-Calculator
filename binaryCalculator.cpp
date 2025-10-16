@@ -1,5 +1,4 @@
 #include "binaryCalculator.h"
-#include <iostream>
 
 using namespace std;
 
@@ -16,21 +15,21 @@ string trimLeadingZeros(string binary);
 // Function to handle binary calculations
 void handleBinaryCalculations() {
     char operation;
-    
+
     displayBinaryMenu();
     cin >> operation;
     operation = tolower(operation);
-    
+
     int n;
     cout << "Enter the number of binary numbers: ";
     cin >> n;
-    
+
     vector<string> binaries(n);
     cout << "Enter the binary numbers: " << endl;
     for (int i = 0; i < n; i++) {
         cin >> binaries[i];
     }
-    
+
     // Determine the required bit length based on the longest input
     size_t maxLength = 0;
     for (const string& binary : binaries) {
@@ -38,7 +37,7 @@ void handleBinaryCalculations() {
             maxLength = binary.length();
         }
     }
-    
+
     // Ensure maxLength accounts for potential carry
     maxLength += 1;
 
@@ -46,7 +45,7 @@ void handleBinaryCalculations() {
     for (string &binary : binaries) {
         binary = padBinary(binary, maxLength);
     }
-    
+
     string result = (operation == 'a') ? addMultipleBinaries(binaries) : subtractMultipleBinaries(binaries);
 
     // Ensure the result is correctly padded to match the longest input length
@@ -92,21 +91,21 @@ string addBinary(string a, string b) {
     size_t maxLength = max(a.length(), b.length()) + 1; // Account for carry
     a = padBinary(a, maxLength);
     b = padBinary(b, maxLength);
-    
+
     string result = "";
     int carry = 0, i = a.size() - 1, j = b.size() - 1;
-    
+
     while (i >= 0 || j >= 0 || carry) {
         int sum = carry;
         if (i >= 0) sum += a[i--] - '0';
         if (j >= 0) sum += b[j--] - '0';
-        
+
         result += (sum % 2) + '0';
         carry = sum / 2;
     }
-    
+
     if (carry) result += '1'; // Account for final carry
-    
+
     reverse(result.begin(), result.end());
     return result;
 }
@@ -116,10 +115,10 @@ string subtractBinary(string a, string b) {
     size_t maxLength = max(a.length(), b.length());
     a = padBinary(a, maxLength);
     b = padBinary(b, maxLength);
-    
+
     string result = "";
     int borrow = 0, i = a.size() - 1, j = b.size() - 1;
-    
+
     while (i >= 0 || j >= 0) {
         int diff = (i >= 0 ? a[i--] - '0' : 0) - (j >= 0 ? b[j--] - '0' : 0) - borrow;
         if (diff < 0) {
@@ -130,7 +129,7 @@ string subtractBinary(string a, string b) {
         }
         result += diff + '0';
     }
-    
+
     reverse(result.begin(), result.end());
     return padBinary(result, maxLength);
 }
