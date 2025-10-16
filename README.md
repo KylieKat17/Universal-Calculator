@@ -22,6 +22,7 @@ To Be Added (POSSIBLY)
 - Add spacing between bytes in binary outputs
 - Limit on how many numbers can be used in binary and hex calculations
 - Allow negative inputs for decimal <-> anything conversions
+- Updated .gitignore
 
 NOTICED ISSUES (AS OF V3 WIP)
 - For V2, the hex to binary conversion only allows strings of 7 characters/digits, once it reaches 8, it outputs a string 0 followed by 1s
