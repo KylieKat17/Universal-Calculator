@@ -1,44 +1,119 @@
 // src/util.cpp
 #include "util.hpp"
 #include <algorithm>
+#include <cctype>
+#include <iostream>
 #include <sstream>
-#include <bitset>
+#include <iomanip>
 
-std::string padBinary(const std::string& bin, size_t length) {
-    if (bin.length() >= length) return bin;
-    return std::string(length - bin.length(), '0') + bin;
-}
+using namespace std;
 
-unsigned int binaryToUInt(const std::string& binary) {
-    return std::stoul(binary, nullptr, 2);
-}
+// ===================================================
+//  STRING UTILITIES
+// ===================================================
 
-std::string uintToBinary(unsigned int number, size_t minWidth) {
-    std::string result = std::bitset<64>(number).to_string(); // max 64 bits
-    auto firstOne = result.find('1');
-    if (firstOne == std::string::npos) return "0";
-
-    std::string trimmed = result.substr(firstOne);
-    if (trimmed.length() < minWidth)
-        return std::string(minWidth - trimmed.length(), '0') + trimmed;
-    return trimmed;
-}
-
-std::string toLower(const std::string& input) {
-    std::string result = input;
-    std::transform(result.begin(), result.end(), result.begin(), ::tolower);
+// Converts an entire string to lowercase
+string toLowercase(const string& str) {
+    string result = str;
+    transform(result.begin(), result.end(), result.begin(),
+              [](unsigned char c) { return std::tolower(c); });
     return result;
 }
 
-std::vector<std::string> splitWhitespace(const std::string& input) {
-    std::stringstream ss(input);
-    std::string token;
-    std::vector<std::string> results;
+// Trims leading and trailing whitespace from a string
+string trimWhitespace(const string& str) {
+    size_t start = str.find_first_not_of(" \t\n\r");
+    size_t end   = str.find_last_not_of(" \t\n\r");
 
-    while (ss >> token) {
-        results.push_back(token);
+    if (start == string::npos || end == string::npos)
+        return "";
+
+    return str.substr(start, end - start + 1);
+}
+
+// ===================================================
+//  VALIDATION HELPERS
+// ===================================================
+
+// Checks if a string is a valid binary number (only 0 and 1)
+bool isValidBinary(const string& str) {
+    if (str.empty()) return false;
+    return all_of(str.begin(), str.end(),
+                  [](char c) { return c == '0' || c == '1'; });
+}
+
+// Checks if a string is a valid hexadecimal number
+bool isValidHex(const string& str) {
+    if (str.empty()) return false;
+    return all_of(str.begin(), str.end(),
+                  [](unsigned char c) { return std::isxdigit(c); });
+}
+
+// ===================================================
+//  FORMATTING HELPERS
+// ===================================================
+
+// Pads a binary string with leading zeros to a given length
+string padBinary(const string& binaryStr, size_t length) {
+    if (binaryStr.size() >= length) return binaryStr;
+    return string(length - binaryStr.size(), '0') + binaryStr;
+}
+
+// Formats a binary string into groups (default 4 bits)
+string formatBinaryWithSpaces(const string& binaryStr, int groupSize) {
+    string cleaned;
+    for (char c : binaryStr) {
+        if (c == '0' || c == '1')
+            cleaned += c;
     }
 
-    return results;
+    string result;
+    int count = 0;
+    for (size_t i = 0; i < cleaned.size(); ++i) {
+        result += cleaned[i];
+        count++;
+        if (count == groupSize && i != cleaned.size() - 1) {
+            result += ' ';
+            count = 0;
+        }
+    }
+    return result;
 }
+
+// Converts a decimal to uppercase hexadecimal string
+string decimalToUpperHex(long long value) {
+    stringstream ss;
+    ss << uppercase << hex << value;
+    return ss.str();
+}
+
+// ===================================================
+//  USER PROMPTS & UX HELPERS
+// ===================================================
+
+// Asks user if they want to perform another operation
+bool promptReturnToMenu() {
+    string input;
+    cout << "\nWould you like to perform another operation? (y/n): ";
+    getline(cin >> ws, input);
+
+    input = toLowercase(trimWhitespace(input));
+    return (input == "y" || input == "yes");
+}
+
+// Asks user if they want to reset shift values (for bit shifting)
+bool promptResetShift() {
+    string input;
+    cout << "\nWould you like to reset the shift values? (y/n): ";
+    getline(cin >> ws, input);
+
+    input = toLowercase(trimWhitespace(input));
+    return (input == "y" || input == "yes");
+}
+
+// Prints a standard invalid input message
+void printInvalidInputMessage() {
+    cout << "\nInvalid input. Please try again.\n";
+}
+
 

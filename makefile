@@ -1,31 +1,42 @@
-all: universalCalculator
+# Compiler and flags
+CXX = g++
+CXXFLAGS = -Wall -Wextra -std=c++17 -Iinclude
+SRC_DIR = src
+OBJ_DIR = build
+BIN = converter
 
-universalCalculator: driver.o binaryCalculator.o binaryConversion.o hexCalculator.o hexConversion.o bitWiseOperations.o bitShift.o
-	g++ -o universalCalculator driver.o binaryCalculator.o binaryConversion.o hexCalculator.o hexConversion.o bitWiseOperations.o bitShift.o
+# Source files (excluding driver.cpp from wildcard ordering to put it last)
+MODULES = \
+  binaryCalculator \
+  binaryConversion \
+  bitShift \
+  bitWiseOperations \
+  hexCalculator \
+  hexConversion
+  util
 
-binaryCalculator.o: binaryCalculator.cpp binaryCalculator.h
-	g++ -c binaryCalculator.cpp
+SOURCES = $(addprefix $(SRC_DIR)/,$(addsuffix .cpp,$(MODULES))) $(SRC_DIR)/driver.cpp
+OBJECTS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SOURCES))
 
-binaryConversion.o: binaryConversion.cpp binaryConversion.h
-	g++ -c binaryConversion.cpp
+# Default target
+all: $(BIN)
 
-hexCalculator.o: hexCalculator.cpp hexCalculator.h hexConversion.h
-	g++ -c hexCalculator.cpp
+# Link all object files into the final binary
+$(BIN): $(OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-hexConversion.o: hexConversion.cpp hexConversion.h
-	g++ -c hexConversion.cpp
+# Compile .cpp source files into .o object files
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-bitWiseOperations.o: bitWiseOperations.cpp bitWiseOperations.hpp
-	g++ -c bitWiseOperations.cpp
-
-bitShift.o: bitShift.cpp bitShift.hpp
-	g++ -c bitShift.cpp
-
-driver.o: driver.cpp binaryCalculator.h binaryConversion.h hexCalculator.h hexConversion.h bitWiseOperations.hpp bitShift.hpp
-	g++ -c driver.cpp
-
-run:
-	./universalCalculator
-
+# Clean up compiled files
 clean:
-	rm -f universalCalculator driver.o binaryCalculator.o binaryConversion.o hexCalculator.o hexConversion.o bitWiseOperations.o bitShift.o
+	rm -rf $(OBJ_DIR) $(BIN)
+
+# Optional run target
+run: all
+	./$(BIN)
+
+.PHONY: all clean run
+
