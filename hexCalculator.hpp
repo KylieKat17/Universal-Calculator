@@ -1,5 +1,5 @@
-#ifndef HEX_CALCULATOR_H
-#define HEX_CALCULATOR_H
+#ifndef HEX_CALCULATOR_HPP
+#define HEX_CALCULATOR_HPP
 
 #include <string>
 #include <vector>
@@ -14,4 +14,5 @@ std::string subtractHex(std::string a, std::string b);
 std::string addMultipleHex(std::vector<std::string>& hexNumbers);
 std::string subtractMultipleHex(std::vector<std::string>& hexNumbers);
 
-#endif
+#endif // HEX_CALCULATOR_HPP
+
